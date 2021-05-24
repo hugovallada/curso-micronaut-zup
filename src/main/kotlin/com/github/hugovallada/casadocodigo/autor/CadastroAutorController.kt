@@ -31,5 +31,21 @@ class CadastroAutorController(
         return HttpResponse.created(uri)
     }
 
+    @Post("/funcional")
+    @Transactional
+    fun funCadastraFuncional(@Body @Valid request: NovoAutorRequest) : HttpResponse<Any>{
+        enderecoClient.consulta(request.cep)
+            .run {
+                if(body() == null){
+                    return HttpResponse.badRequest()
+                }
 
+                val autor = autorRepository.save(request.toModel(body()!!))
+
+                val uri = UriBuilder.of("/autores/{id}")
+                    .expand(mutableMapOf(Pair("id", autor.id)))
+
+                return HttpResponse.created(uri)
+            }
+    }
 }

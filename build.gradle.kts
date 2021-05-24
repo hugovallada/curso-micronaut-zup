@@ -47,7 +47,7 @@ dependencies {
 
     // POSTGRES
     implementation("org.postgresql:postgresql: 42.2.18")
-
+    implementation("io.micronaut.xml:micronaut-jackson-xml")
 
 }
 
