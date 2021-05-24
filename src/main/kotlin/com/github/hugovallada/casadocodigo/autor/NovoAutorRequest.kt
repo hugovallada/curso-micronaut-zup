@@ -9,7 +9,7 @@ import javax.validation.constraints.Size
 @Introspected
 data class NovoAutorRequest(
     @field:NotBlank val nome: String,
-    @field:Email val email: String,
+    @field:Email @field:EmailDuplicado val email: String,
     @field:NotBlank @field:Size(max = 400) val descricao: String,
     @field:NotBlank @field:Cep val cep:String,
     @field:NotBlank val numero: String
