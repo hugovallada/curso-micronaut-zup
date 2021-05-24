@@ -3,8 +3,13 @@ plugins {
     id("org.jetbrains.kotlin.kapt") version "1.4.32"
     id("com.github.johnrengelman.shadow") version "7.0.0"
     id("io.micronaut.application") version "1.5.0"
-    id("org.jetbrains.kotlin.plugin.allopen") version "1.4.32"
+    id("org.jetbrains.kotlin.plugin.allopen") version "1.4.32" // essa anotação já abre as classes
     id("org.jetbrains.kotlin.plugin.jpa") version "1.4.32" // esse plugin já gera o construtor padrão, sem precisar implementar o org.jetbrains.kotlin:kotlin-noarg:$kotlin_version + kotlin-jpa
+}
+
+allOpen{
+    annotation("io.micronaut.http.annotation.Controller") // específica a classe que será aberta
+    // poderia criar uma anotação para isso, e colocar no lugar
 }
 
 version = "0.1"

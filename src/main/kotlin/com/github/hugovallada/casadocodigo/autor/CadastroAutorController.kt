@@ -6,6 +6,7 @@ import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Post
 import io.micronaut.http.uri.UriBuilder
 import io.micronaut.validation.Validated
+import javax.transaction.Transactional
 import javax.validation.Valid
 
 @Validated
@@ -13,6 +14,7 @@ import javax.validation.Valid
 class CadastroAutorController(private val autorRepository: AutorRepository) {
 
     @Post
+    @Transactional
     fun cadastrar(@Body @Valid request: NovoAutorRequest) : HttpResponse<Any> {
         val autor = request.toModel()
         autorRepository.save(autor)

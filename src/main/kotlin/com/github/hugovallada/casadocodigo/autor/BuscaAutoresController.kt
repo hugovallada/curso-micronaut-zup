@@ -4,11 +4,13 @@ import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.QueryValue
+import javax.transaction.Transactional
 
 @Controller("/autores")
 class BuscaAutoresController(private val autorRepository: AutorRepository) {
 
     @Get
+    @Transactional
     fun listar(@QueryValue(defaultValue = "") email: String): HttpResponse<Any> {
 
         if (email.isBlank()) {
@@ -30,6 +32,7 @@ class BuscaAutoresController(private val autorRepository: AutorRepository) {
     }
 
     @Get("/funcional")
+    @Transactional
     fun listaFuncional(@QueryValue(defaultValue = "") email: String): HttpResponse<Any> {
 
         email.run {
