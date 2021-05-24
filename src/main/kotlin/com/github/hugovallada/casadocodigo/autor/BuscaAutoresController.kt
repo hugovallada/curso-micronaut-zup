@@ -41,8 +41,7 @@ class BuscaAutoresController(private val autorRepository: AutorRepository) {
                     return HttpResponse.ok(this)
                 }
             } else {
-                //return@dados autorRepository.findByEmail(this)
-                val opt = autorRepository.findByEmail(this)
+                val opt = autorRepository.buscarPorEmailSQL(this)
                 if (opt.isPresent) {
                     return HttpResponse.ok(DetalhesDoAutorResponse(opt.get()))
                 }
