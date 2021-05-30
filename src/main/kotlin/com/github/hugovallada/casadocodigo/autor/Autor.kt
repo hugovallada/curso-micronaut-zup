@@ -11,7 +11,7 @@ class Autor(
     val nome: String,
     val email: String,
     var descricao: String,
-    val endereco: Endereco
+    val endereco: Endereco? // Modifica o endereço para aceitar nulo, para permitir a execução dos testes
 ) {
     @Id @GeneratedValue
     var id: Long? = null

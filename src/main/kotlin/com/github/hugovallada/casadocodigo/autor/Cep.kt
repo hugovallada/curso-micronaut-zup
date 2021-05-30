@@ -31,7 +31,6 @@ class CepValidator : ConstraintValidator<Cep, String> {
 
 }
 
-@Singleton
 class CepValidatorFuncional : ConstraintValidator<Cep, String> {
     override fun isValid(
         value: String?,

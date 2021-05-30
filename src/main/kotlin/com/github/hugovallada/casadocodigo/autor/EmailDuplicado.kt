@@ -30,7 +30,6 @@ class EmailDuplicadoValidator(private val autorRepository: AutorRepository) :
 
 }
 
-@Singleton
 class EmailDuplicadoValidatorNaoFuncional(private val autorRepository: AutorRepository) :
     ConstraintValidator<EmailDuplicado, String> {
     override fun isValid(
